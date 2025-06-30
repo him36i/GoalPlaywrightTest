@@ -1,9 +1,11 @@
 const {test, expect } = require('@playwright/test');
+import { BasePage } from '../pages/BasePage';
 
 test('Locaor Builin',async({page})=>{
 
-    // Built in locators 
- await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+// Built in locators 
+ const base = new BasePage(page);
+ await base.openSource();
 
  const logo = await page.getByAltText('company-branding')
  await expect(logo).toBeVisible()

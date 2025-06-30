@@ -32,24 +32,43 @@
 
 // })
 
-import { test, expect } from '@playwright/test'
+// import { test, expect } from '@playwright/test'
 
-test('Locators', async ({ page }) => {
+// test('Locators', async ({ page }) => {
 
-  await page.goto('https://www.demoblaze.com/index.html')
+//   await page.goto('https://www.demoblaze.com/index.html')
 
-  await page.click('#login2')
+//   await page.click('#login2')
 
-  // Wait for the login modal to appear
-  await page.waitForSelector('#loginusername', { state: 'visible' })
+//   // Wait for the login modal to appear
+//   await page.waitForSelector('#loginusername', { state: 'visible' })
 
-  await page.fill('#loginusername', 'Abcdefgn')
-  await page.fill('#loginpassword', 'User@123456!')
+//   await page.fill('#loginusername', 'Abcdefgn')
+//   await page.fill('#loginpassword', 'User@123456!')
 
-  await page.click("//button[normalize-space()='Log in']")
+//   await page.click("//button[normalize-space()='Log in']")
 
-  const logoutlink = page.locator("//a[normalize-space()='Log out']")
-  await expect(logoutlink).toBeVisible()
+//   const logoutlink = page.locator("//a[normalize-space()='Log out']")
+//   await expect(logoutlink).toBeVisible()
 
-  await page.close()
-})
+//   await page.close()
+// })
+// tests/login.spec.js
+import { test, expect } from '@playwright/test';
+import { BasePage } from '../pages/BasePage';
+
+test('Login Functionality', async ({ page }) => {
+  const base = new BasePage(page);
+  await base.openDemoblaze();
+
+  await page.click('#login2');
+  await page.waitForSelector('#loginusername', { state: 'visible' });
+
+  await page.fill('#loginusername', 'Abcdefgn');
+  await page.fill('#loginpassword', 'User@123456!');
+
+  await page.click("//button[normalize-space()='Log in']");
+
+  const logoutlink = page.locator("//a[normalize-space()='Log out']");
+  await expect(logoutlink).toBeVisible();
+});

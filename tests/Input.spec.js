@@ -1,8 +1,10 @@
 const{test, expect}= require('@playwright/test')
+import { BasePage } from '../pages/BasePage';
 
 test('handle inputbox', async ({page})=>{
 
-   await page.goto('https://testautomationpractice.blogspot.com/')
+   const base = new BasePage(page);
+   await base.openBlogspot();
 
    // Check if the input box is visible or not
    await expect(await page.locator('//input[@id="name"]')).toBeVisible()

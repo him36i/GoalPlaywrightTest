@@ -1,9 +1,11 @@
 const { test, expect } = require('@playwright/test')
+import { BasePage } from '../pages/BasePage';
 
 test('Assertiontest', async ({ page }) => {
 
     //open app URL
-    await page.goto('https://demo.nopcommerce.com/register')
+      const base = new BasePage(page);
+      await base.nopeCommerce();
 
     //Assertion for pageURL
     await expect(page).toHaveURL('https://demo.nopcommerce.com/register')

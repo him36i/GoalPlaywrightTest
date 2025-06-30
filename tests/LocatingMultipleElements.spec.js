@@ -1,8 +1,10 @@
 const {test, expect } = require('@playwright/test');
+import { BasePage } from '../pages/BasePage';
 
 test('Locating Multiple Elements', async({ page })=>{
 
-await page.goto('https://www.demoblaze.com/index.html')
+  const base = new BasePage(page);
+   await base.openDemoblaze();
 
 // const links = await page.$$('a');
 

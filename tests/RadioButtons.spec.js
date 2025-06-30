@@ -1,8 +1,10 @@
 const{test, expect}= require('@playwright/test')
+import { BasePage } from '../pages/BasePage';
 
 test('handle radio button', async ({page})=>{
 
-   await page.goto('https://testautomationpractice.blogspot.com/')
+   const base = new BasePage(page);
+   await base.openBlogspot();
 
   // Check Radio button
   await page.locator("//input[@value='male']").check()

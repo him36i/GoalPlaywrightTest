@@ -1,8 +1,10 @@
 const{test, expect}= require('@playwright/test')
+import { BasePage } from '../pages/BasePage';
 
 test('handle check boxes', async ({page})=>{
  
-    await page.goto('https://testautomationpractice.blogspot.com/')
+      const base = new BasePage(page);
+      await base.openBlogspot();
 
     await page.locator("//input[@id='monday' and @type='checkbox']").check()
                                     //or

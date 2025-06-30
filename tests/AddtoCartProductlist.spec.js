@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test'
+import { BasePage } from '../pages/BasePage';
 
 test('Locators', async ({ page }) => {
 
-  await page.goto('https://www.demoblaze.com/index.html')
+  const base = new BasePage(page);
+  await base.openDemoblaze();
 
   await page.click('#login2')
 
@@ -21,6 +23,8 @@ test('Locators', async ({ page }) => {
 
 
   await page.click("a[id='cartur']")
+
+  await page.waitForTimeout(5000)
 
   await page.waitForSelector("// tbody[@id='tbodyid']//tr");
  const cartproducts  = await page.$$("// tbody[@id='tbodyid']//tr") // page.$$ method is used to select multiple elements 

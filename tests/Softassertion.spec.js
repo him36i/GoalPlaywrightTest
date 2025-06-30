@@ -1,10 +1,12 @@
 const { test, expect } = require('@playwright/test')
+import { BasePage } from '../pages/BasePage';
 
 
 test("Soft Assertion", async ({page})=>{
- 
-   await page.goto('https://www.demoblaze.com/index.html')
 
+     const base = new BasePage(page);
+     await base.openDemoblaze();
+   
     // //Hard Assertion
     // await expect(page).toHaveTitle('STORE')
     // await expect(page).toHaveURL('https://www.demoblaze.com/index.html')
