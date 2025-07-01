@@ -56,6 +56,7 @@
 // tests/login.spec.js
 import { test, expect } from '@playwright/test';
 import { BasePage } from '../pages/BasePage';
+import testData from '../test-data/testData2.json';
 
 test('Login Functionality', async ({ page }) => {
   const base = new BasePage(page);
@@ -64,11 +65,13 @@ test('Login Functionality', async ({ page }) => {
   await page.click('#login2');
   await page.waitForSelector('#loginusername', { state: 'visible' });
 
-  await page.fill('#loginusername', 'Abcdefgn');
-  await page.fill('#loginpassword', 'User@123456!');
+  // Fill data from JSON
+  await page.fill('#loginusername', testData.username);
+  await page.fill('#loginpassword', testData.password);
 
   await page.click("//button[normalize-space()='Log in']");
 
   const logoutlink = page.locator("//a[normalize-space()='Log out']");
   await expect(logoutlink).toBeVisible();
 });
+

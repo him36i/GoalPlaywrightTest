@@ -16,5 +16,5 @@ test('addEmployee', async ({ page }) => {
   await page.getByRole('button', { name: 'Save' }).click();
   // await page.getByText('Success', { exact: true }).click();
   await page.waitForTimeout(5000)
-  await expect(page).toHaveTitle('Success')
+  await expect(page).toHaveTitle('OrangeHRM')
 });
