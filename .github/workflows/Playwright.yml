@@ -28,11 +28,11 @@ jobs:
 
       - name: 📂 Check if allure-results exist
         run: |
-          echo "🔍 Checking allure-results folder:"
+          echo " Checking allure-results folder:"
           if [ -d "./allure-results" ]; then
             ls -la ./allure-results
           else
-            echo "❌ allure-results folder NOT FOUND!"
+            echo " allure-results folder NOT FOUND!"
           fi
 
       - name: 📥 Install Allure CLI
